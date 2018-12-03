@@ -35,3 +35,5 @@ create table retail_store
 comment '零售店表'
 ;
 
+
+select * from retail_store;
