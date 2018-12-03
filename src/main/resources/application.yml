@@ -1,0 +1,38 @@
+
+
+### mybatis configure
+mybatis:
+  type-aliases-package: com.ps.jltz.entity
+  mapper-locations: classpath*:com/diudiu/applet/*/mapper/**/*.xml
+  configuration:
+    lazy-loading-enabled: true
+    cache-enabled: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
+spring:
+  datasource:
+    druid:
+      url: jdbc:mysql://127.0.0.1:3306/diudiu?useSSL=false&characterEncoding=utf-8&autoReconnect
+      username: root
+      password: daocao
+      driver-class-name: com.mysql.jdbc.Driver
+      initial-size: 1
+      max-active: 20
+      min-idle: 1
+      max-wait: 60000
+      pool-prepared-statements: false
+      validation-query: SELECT 1
+      test-on-borrow: false
+      test-on-return: false
+      test-while-idle: true
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 25200000
+      filters: slf4j,config
+      #spring.datasource.druid.connection-properties=config.decrypt=true;config.decrypt.key=${jdbc.publickey}
+      filter:
+        slf4j:
+          connection-log-enabled: false
+          statement-log-enabled: false
+          result-set-log-enabled: false
+          statement-executable-sql-log-enable: true
