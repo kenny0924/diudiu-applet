@@ -1,6 +1,7 @@
 package com.diudiu.applet.service;
 
 
+import com.diudiu.applet.dto.JWTInfo;
 import com.diudiu.applet.entity.JwtToken;
 
 /**
@@ -39,4 +40,5 @@ public interface JwtService {
      * @time 12/28/17 18:17
      */
     Integer doDeleteJwtByTokenUuid(String uuid);
+
 }

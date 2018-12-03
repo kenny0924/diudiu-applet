@@ -2,8 +2,8 @@
 
 ### mybatis configure
 mybatis:
-  type-aliases-package: com.ps.jltz.entity
-  mapper-locations: classpath*:com/diudiu/applet/*/mapper/**/*.xml
+  type-aliases-package: com.diudiu.applet
+  mapper-locations: classpath*:com/diudiu/applet/mapper/xml/*.xml
   configuration:
     lazy-loading-enabled: true
     cache-enabled: true
@@ -38,3 +38,10 @@ spring:
           statement-executable-sql-log-enable: true
 server:
   port: 19990
+
+
+### Jwt token configure
+jwt:
+  token:
+    rsa-pri: MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAK4RHGivu/z/wMEKVknsCo+LkYekl9o6y3zYSJPkxBfXyWqCJgeBSTPf25xaXwi2Jy8R4JFlGTEdFfv1QjZVSIQHTHo3fym8p8vAZSa0K25KLYnaZI4SYDS8fV2Q+9CRDdQmWVGfZ5kC3rGXHjWhpTMQWRtj5LGSTlfL6+XXePprAgMBAAECgYBI+qmThqJlh4D0LnZRFeKznkuMuEhmWaI5HKEJSK+iY3lx61EwclcTpbZ4jjcr+trg1Dj4HI/8VHqEIab6CrWU274Skh2psAcCIJjPZHxXIFxLqbEjXGBmi5B25lqKzJ2REEYzf3fdDAKolKcFqGEXItvJB6njdP9+YyzkrsHogQJBAOR6PT/ZWXiq2k7Akefl/pQycyjDouIMt5RB5YPrVK8rlBYaygBpm0ehthSPVthRJPADlzI/lJj9SvJHOnsLtkECQQDDCPZtcFrnWAOkulrafcUVkW9aevYTTmcRMQn+DP97W35sPvqmf4mgJb/9qA0IHf5rI9lfvuRRqOU/R0wBiP2rAkEAvDKQhypij4m0XxAyXyFNDQdtYlObtLWi9eU9x+ctj0jHJ1oTsDlNJbjngZH8iBx235kljsdegJKLjHvtiPNBwQJAcAqpDou6HSbJyQspgFU6MD7BWphC3ypuOUkTtXegGSyhfuvbMGUaGf81wTGWcvBQJRqOGNvf7C17rRN3TXZ2SwJAaNhjYA62IO4/nC1a4l6sig7ToDdYugr5NCJjLgHfOok1ajDDnKND+jSjMJBgCYjRscWnIc/TdE/EmNSLPU2ZSQ==
+    rsa-pub: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCuERxor7v8/8DBClZJ7AqPi5GHpJfaOst82EiT5MQX18lqgiYHgUkz39ucWl8IticvEeCRZRkxHRX79UI2VUiEB0x6N38pvKfLwGUmtCtuSi2J2mSOEmA0vH1dkPvQkQ3UJllRn2eZAt6xlx41oaUzEFkbY+Sxkk5Xy+vl13j6awIDAQAB

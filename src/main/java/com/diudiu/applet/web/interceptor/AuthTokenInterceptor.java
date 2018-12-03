@@ -1,5 +1,6 @@
 package com.diudiu.applet.web.interceptor;
 
+import com.diudiu.applet.constants.RequestConstant;
 import com.diudiu.applet.dto.JWTInfo;
 import com.diudiu.applet.dto.Message;
 import com.diudiu.applet.utils.JsonUtils;
