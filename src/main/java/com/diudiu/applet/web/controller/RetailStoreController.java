@@ -1,7 +1,6 @@
-package com.diudiu.applet.controller;
+package com.diudiu.applet.web.controller;
 
 import com.diudiu.applet.dto.Message;
-import com.diudiu.applet.entity.DeliveryAddressArea;
 import com.diudiu.applet.entity.Province;
 import com.diudiu.applet.entity.RetailStore;
 import com.diudiu.applet.service.DeliveryAddressAreaService;
