@@ -36,4 +36,65 @@ comment '零售店表'
 ;
 
 
-select * from retail_store;
+
+
+
+create table user_sms_code
+(
+  id           int auto_increment
+  comment '主键ID'
+    primary key,
+  uuid        varchar(32)   not null
+  comment '短信UUID',
+  sms_code     varchar(6)   not null
+  comment '验证码',
+  user_tel     varchar(11)  not null
+  comment '手机号',
+  created_time datetime     not null
+  comment '创建时间'
+)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 DEFAULT CHARACTER SET UTF8 COLLATE UTF8_GENERAL_CI
+  comment '短信验证码表';
+
+
+
+create table user_auth_token
+(
+  id    bigint auto_increment comment '主键'
+    primary key,
+  token_uuid varchar(64) not null
+  comment 'Token UUID',
+  user_id bigint(11) not null
+  comment '用户UUId',
+  token varchar(512) not null
+  comment 'Token',
+  modify_time datetime null
+  comment '修改时间',
+  created_time datetime not null
+  comment '创建时间' default now(),
+  constraint token_uuid
+  unique (token_uuid),
+  constraint user_uuid
+  unique (user_id)
+)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 DEFAULT CHARACTER SET UTF8 COLLATE UTF8_GENERAL_CI
+  comment 'Token表';
+
+
+create table users
+(
+  id            bigint auto_increment
+  comment '主键'
+    primary key,
+  user_tel      varchar(11)                        not null
+  comment '手机号',
+  name          varchar(32)                        null
+  comment '名称',
+  head_portrait varchar(128)                       null
+  comment '头像',
+  wc_open_id    varchar(64)                        null
+  comment '微信OpenID',
+  create_time   datetime default CURRENT_TIMESTAMP not null
+  comment '创建时间',
+  modify_time   datetime                           null
+  comment '修改时间'
+)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 DEFAULT CHARACTER SET UTF8 COLLATE UTF8_GENERAL_CI
+  comment '用户表';
