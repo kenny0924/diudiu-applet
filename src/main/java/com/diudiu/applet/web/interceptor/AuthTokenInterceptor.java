@@ -5,6 +5,7 @@ import com.diudiu.applet.dto.Message;
 import com.diudiu.applet.utils.JsonUtils;
 import com.diudiu.applet.utils.ObjectUtil;
 import com.diudiu.applet.web.annotation.TokenApi;
+import com.diudiu.applet.web.jwt.JwtHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -36,3 +36,5 @@ spring:
           statement-log-enabled: false
           result-set-log-enabled: false
           statement-executable-sql-log-enable: true
+server:
+  port: 19990
