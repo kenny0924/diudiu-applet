@@ -1,5 +1,6 @@
 package com.diudiu.applet.web.controller;
 
+import com.diudiu.applet.dto.LoginDto;
 import com.diudiu.applet.dto.Message;
 import com.diudiu.applet.entity.SmsCode;
 import com.diudiu.applet.service.SmsService;
@@ -24,14 +25,9 @@ public class SmsController {
 
     /**
      * 发送短信
-     *
-     * @param tel 手机号码
-     * @author Zhibin Liu
-     * @time 9/22/17 11:29
      */
-    @RequestMapping(value = "/sendSms", method = RequestMethod.GET)
-    public ResponseEntity<Message> sendSms(@RequestParam String tel,
-                                           @RequestParam Integer t) throws Exception {
+    @PostMapping(value = "/send")
+    public ResponseEntity<Message> sendSms(@RequestBody LoginDto loginDto) throws Exception {
 
         Integer random = RandomUtil.generateRandom(4);
 
@@ -39,8 +35,8 @@ public class SmsController {
 //        boolean success = commonQueue.sendSms(String.valueOf(random), tel);
         SmsCode userSmsCode = new SmsCode();
         userSmsCode.setSmsCode(random.toString());
-        userSmsCode.setCreatedTime(new Date());
-        userSmsCode.setUserTel(tel);
+        userSmsCode.setCreateTime(new Date());
+        userSmsCode.setUserTel(loginDto.getUserTel());
         userSmsCode.setUuid(UUIDUtils.generateUuid());
         // 保存记录
         smsMessageService.doCreate(userSmsCode);

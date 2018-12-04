@@ -1,5 +1,7 @@
 package com.diudiu.applet.service;
 
+import com.diudiu.applet.dto.JWTInfo;
+import com.diudiu.applet.dto.LoginDto;
 import com.diudiu.applet.entity.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,5 +31,13 @@ public class UserServiceTest {
     public void selectByMap() {
         List<User> users = userService.selectByMap(new HashMap<>());
         assertNotNull(users);
+    }
+
+    @Test
+    public void doCreateUserAndToken() throws Exception {
+        LoginDto loginDto = new LoginDto();
+        loginDto.setUserTel("15116277873");
+
+        userService.doCreateUserAndToken(loginDto);
     }
 }

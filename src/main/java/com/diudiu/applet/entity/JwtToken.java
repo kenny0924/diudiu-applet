@@ -1,5 +1,10 @@
 package com.diudiu.applet.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import lombok.Data;
+
 import java.util.Date;
 
 /**
@@ -8,11 +13,13 @@ import java.util.Date;
  * @time 12/28/17
  * @since 0.1
  */
+@Data
 public class JwtToken {
 
     /**
      * 主键
      **/
+    @TableId(type = IdType.AUTO)
     private Long id;
     /**
      * 用户ID
@@ -26,10 +33,6 @@ public class JwtToken {
      * Token
      **/
     private String token;
-    /**
-     * 修改时间
-     **/
-    private Date modifyTime;
 
     public JwtToken() {
     }
@@ -40,43 +43,4 @@ public class JwtToken {
         this.token = token;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTokenUuid() {
-        return tokenUuid;
-    }
-
-    public void setTokenUuid(String tokenUuid) {
-        this.tokenUuid = tokenUuid;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
-    public Date getModifyTime() {
-        return modifyTime;
-    }
-
-    public void setModifyTime(Date modifyTime) {
-        this.modifyTime = modifyTime;
-    }
 }

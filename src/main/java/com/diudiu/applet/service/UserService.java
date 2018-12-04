@@ -1,5 +1,7 @@
 package com.diudiu.applet.service;
 
+import com.diudiu.applet.dto.JWTInfo;
+import com.diudiu.applet.dto.LoginDto;
 import com.diudiu.applet.entity.User;
 
 import java.util.List;
@@ -14,4 +16,6 @@ import java.util.Map;
 public interface UserService {
 
     List<User> selectByMap(Map<String, Object> map);
+
+    JWTInfo doCreateUserAndToken(LoginDto dto) throws Exception;
 }

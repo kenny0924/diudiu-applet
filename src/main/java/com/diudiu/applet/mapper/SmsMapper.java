@@ -16,6 +16,6 @@ public interface SmsMapper extends BaseMapper<SmsCode> {
     /**
      * 根据UUID查询短信验证码
      */
-    @Select("")
+    @Select("select c.id, c.uuid, c.sms_code, c.user_tel, c.create_time from user_sms_code c where uuid = #{uuid,   javaType=string}")
     SmsCode selectBySmsUuid(String smsUuid);
 }

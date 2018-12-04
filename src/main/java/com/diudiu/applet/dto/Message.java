@@ -1,6 +1,7 @@
 package com.diudiu.applet.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.pagehelper.PageInfo;
 
 import java.util.List;
@@ -27,8 +28,12 @@ public class Message {
     // 重大错误
     public static final Message REPEAT_REQUEST = new Message("999", "重复提交请求");
 
+    @JsonProperty("StatusCode")
     private String resCode = "200";
+    private Boolean Status = true;
+    @JsonProperty("Msg")
     private String msg;
+    @JsonProperty("Result")
     private Object data;
     private Page page;
 

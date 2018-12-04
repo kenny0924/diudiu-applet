@@ -1,6 +1,8 @@
 package com.diudiu.applet.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
@@ -13,6 +15,7 @@ public class SmsCode {
     /**
      * 主键ID
      **/
+    @TableId(type = IdType.AUTO)
     private Long id;
 
     /**
@@ -35,6 +38,7 @@ public class SmsCode {
     /**
      * 创建时间
      **/
-    private Date createdTime;
+    @TableField("create_time")
+    private Date createTime;
 
 }

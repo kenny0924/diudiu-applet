@@ -50,7 +50,7 @@ create table user_sms_code
   comment '验证码',
   user_tel     varchar(11)  not null
   comment '手机号',
-  created_time datetime     not null
+  create_time datetime     not null
   comment '创建时间'
 )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 DEFAULT CHARACTER SET UTF8 COLLATE UTF8_GENERAL_CI
   comment '短信验证码表';
@@ -69,7 +69,7 @@ create table user_auth_token
   comment 'Token',
   modify_time datetime null
   comment '修改时间',
-  created_time datetime not null
+  create_time datetime not null
   comment '创建时间' default now(),
   constraint token_uuid
   unique (token_uuid),

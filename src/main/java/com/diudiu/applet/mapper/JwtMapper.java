@@ -19,10 +19,9 @@ public interface JwtMapper {
      * @time 12/29/17 13:51
      */
     @Select("SELECT\n" +
-            "            T.TOKEN_UUID,\n" +
+            "            T.TOKEN_UUID as tokenUuid,\n" +
             "            T.TOKEN,\n" +
-            "            T.USER_ID,\n" +
-            "            T.MODIFY_TIME\n" +
+            "            T.USER_ID as userId\n" +
             "        FROM USER_AUTH_TOKEN T\n" +
             "        WHERE T.USER_ID = #{userId,       javaType=long}")
     JwtToken queryJwtTokenByUserUuid(@Param("userId") Long userId);
@@ -39,7 +38,7 @@ public interface JwtMapper {
             "        TOKEN_UUID,\n" +
             "        USER_ID,\n" +
             "        TOKEN,\n" +
-            "        CREATED_TIME\n" +
+            "        CREATE_TIME\n" +
             "        )\n" +
             "        VALUES (\n" +
             "        #{tokenUuid,        javaType=string},\n" +
