@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
 
 import static org.junit.Assert.*;
 
@@ -39,5 +40,13 @@ public class DeliveryAddressAreaServiceTest {
     public void selectRetailStoreArea() {
         List<Province> provinces = deliveryAddressAreaService.selectRetailStoreArea();
         assertNotNull(provinces);
+    }
+
+    @Test
+    public void selectByNames() {
+        List<DeliveryAddressArea> areas = deliveryAddressAreaService.selectByNames("上海", "上海市");
+        Map m = areas.stream()
+                .collect(Collectors.groupingBy(DeliveryAddressArea::getType));
+        assertNotNull(areas);
     }
 }

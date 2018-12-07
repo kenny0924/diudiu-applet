@@ -1,5 +1,6 @@
 package com.diudiu.applet.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.diudiu.applet.entity.RetailStore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,7 +31,7 @@ public class RetailStoreServiceTest {
     public void selectByMap() {
         Map<String, Object> map = new ConcurrentHashMap<>();
         //map.put("province_id", 4);
-        List<RetailStore> retailStores = retailStoreService.selectByMap(map);
+        List<RetailStore> retailStores = retailStoreService.selectByWrapper(new LambdaQueryWrapper<>());
         assertNotNull(retailStores);
     }
 }

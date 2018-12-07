@@ -15,9 +15,8 @@ create table delivery_address_area
 	del_flag char default '0' not null comment '删除标记',
 	create_by varchar(64) null comment '创建者',
 	type char default '0' null comment '地区类型，0省，1市，2区或县'
-)
-comment '地址区域表' charset=utf8mb4
-;
+)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 DEFAULT CHARACTER SET UTF8 COLLATE UTF8_GENERAL_CI
+  comment '地区表';
 
 create table retail_store
 (
@@ -31,9 +30,8 @@ create table retail_store
 	business_hours varchar(32) not null comment '营业时间',
 	create_time datetime default CURRENT_TIMESTAMP null comment '创建时间',
 	modify_time datetime null comment '修改时间'
-)
-comment '零售店表'
-;
+)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 DEFAULT CHARACTER SET UTF8 COLLATE UTF8_GENERAL_CI
+  comment '零售店表';
 
 
 
@@ -81,7 +79,7 @@ create table user_auth_token
 
 create table users
 (
-  id            bigint auto_increment
+  id            bigint auto_increment primary key
   comment '主键'
     primary key,
   user_tel      varchar(11)                        not null
@@ -98,3 +96,115 @@ create table users
   comment '修改时间'
 )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 DEFAULT CHARACTER SET UTF8 COLLATE UTF8_GENERAL_CI
   comment '用户表';
+
+
+create table images
+(
+  id      bigint  not null primary key auto_increment
+  comment '主键',
+  foreign_id  int   not null
+  comment '外键ID',
+  type  int not null
+  comment '类型 1:商品banner图片',
+  source  varchar(256)  not null
+  comment '图片连接',
+  create_time datetime not null
+  comment '创建时间' default now()
+)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 DEFAULT CHARACTER SET UTF8 COLLATE UTF8_GENERAL_CI
+  comment '图片表';
+
+
+create table goods_content
+(
+  id    bigint    not null  primary key auto_increment
+  comment '主键',
+  goods_id  int not null
+  comment '商品ID',
+  type    int   not null
+  comment '类型 1:图片 2:视频',
+  paths   varchar(256)  null
+  comment '图片路径',
+  video_url varchar(256)  null
+  comment '视频地址',
+  cover_url varchar(256)  null
+  comment '视频封面地址',
+  create_time datetime not null
+  comment '创建时间' default now()
+)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 DEFAULT CHARACTER SET UTF8 COLLATE UTF8_GENERAL_CI
+  comment '商品内容表';
+
+
+create table goods_size
+(
+  id    bigint    not null primary key auto_increment
+  comment '主键',
+  goods_id   int not null
+  comment '商品ID',
+  name  varchar(16) not null
+  comment '名字',
+  available_stock int   not null
+  comment '库存',
+  size  varchar(8)  not null
+  comment '尺码大小',
+  create_time   datetime  not null
+  comment '创建时间' default now()
+)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 DEFAULT CHARACTER SET UTF8 COLLATE UTF8_GENERAL_CI
+  comment '商品尺码表';
+
+create table goods_type
+(
+  id      int primary key   auto_increment
+    comment '主键',
+  name    varchar(16) not null
+    comment '名称',
+  level   int   not null
+    comment '类型级别' default 0,
+  pid     int   not null
+    comment '上级ID' default 0,
+  create_time   datetime
+    comment '创建时间' default now()
+)ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8 DEFAULT CHARACTER SET UTF8 COLLATE UTF8_GENERAL_CI
+  comment '商品类型表';
+
+create table goods_param
+(
+  id    bigint    not null primary key auto_increment
+    comment '主键',
+  goods_id  int not null
+  comment '商品ID',
+  name  varchar(16)   not null
+    comment '参数名称',
+  value varchar(64)   not null
+    comment '参数值',
+  create_time datetime  not null
+    comment '创建时间' default now()
+)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 DEFAULT CHARACTER SET UTF8 COLLATE UTF8_GENERAL_CI
+  comment '商品参数表';
+
+create table goods
+  (
+  id  int   not null  primary key auto_increment
+  comment '主键',
+  name  varchar(64) not null
+  comment '商品名称',
+  sn varchar(32) not null
+  comment '商品的产品号 一个商品可以有多种颜色/尺寸 但是产品号是一样的',
+  image varchar(256) null
+  comment '商品图片',
+  color varchar(16) not null
+  comment '颜色',
+  real_price  double(10,2)  not null
+  comment '实际价格',
+  discount_price double(10, 2)  not null
+  comment '折扣价格',
+  diudiu_price  double(10, 2) not null
+  comment '丢丢币价格',
+  goods_type varchar(127) not null
+  comment '商品类型 多个：1,3,4,6区分',
+  create_time datetime not null
+  comment '创建时间' default now(),
+  modify_time datetime  null
+  comment '修改时间'
+)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 DEFAULT CHARACTER SET UTF8 COLLATE UTF8_GENERAL_CI
+  comment '商品表';
+

@@ -42,4 +42,7 @@ public class UUIDUtils {
         return String.valueOf(chars);
     }
 
+    public static void main(String[] args) {
+        System.out.println(generateUuid());
+    }
 }

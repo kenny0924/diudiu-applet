@@ -1,5 +1,8 @@
 package com.diudiu.applet.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.diudiu.applet.entity.DeliveryAddressArea;
 import com.diudiu.applet.entity.RetailStore;
 import com.diudiu.applet.mapper.RetailStoreMapper;
@@ -26,7 +29,7 @@ public class RetailStoreServiceImpl implements RetailStoreService {
     private RetailStoreMapper retailStoreMapper;
 
     @Override
-    public List<RetailStore> selectByMap(Map<String, Object> map) {
-        return retailStoreMapper.selectByMap(map);
+    public List<RetailStore> selectByWrapper(Wrapper<RetailStore> areaWrapper) {
+        return retailStoreMapper.selectList(areaWrapper);
     }
 }

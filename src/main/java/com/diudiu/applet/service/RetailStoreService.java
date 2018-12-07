@@ -1,5 +1,6 @@
 package com.diudiu.applet.service;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.diudiu.applet.entity.DeliveryAddressArea;
 import com.diudiu.applet.entity.RetailStore;
 
@@ -15,5 +16,5 @@ import java.util.Map;
 public interface RetailStoreService {
 
 
-    List<RetailStore> selectByMap(Map<String, Object> map);
+    List<RetailStore> selectByWrapper(Wrapper<RetailStore> areaWrapper);
 }

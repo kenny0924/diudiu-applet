@@ -1,17 +1,31 @@
 package com.diudiu.applet.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
+
 /**
  * @author 刘智斌
  * @version 0.1
  * @time 11/15/17
  * @since 0.1
  */
+@Data
 public class Page {
+    /*//列表商品总数
+        "totalSize":112,
+                //当前页码
+                "pageNumber":1,
+                //总页数
+                "totalPages":6,
+    //筛选项*/
+    @JsonProperty("totalSize")
     private Long totalRow;
+    @JsonProperty("pageNumber")
     private Integer currentPage;
     private Integer nextPage;
     private Integer prePage;
     private Integer pageSize;
+    @JsonProperty("totalPages")
     private Integer pages;
 
     public Page() {
@@ -26,51 +40,4 @@ public class Page {
         this.pages = pages;
     }
 
-    public Long getTotalRow() {
-        return totalRow;
-    }
-
-    public void setTotalRow(Long totalRow) {
-        this.totalRow = totalRow;
-    }
-
-    public Integer getCurrentPage() {
-        return currentPage;
-    }
-
-    public void setCurrentPage(Integer currentPage) {
-        this.currentPage = currentPage;
-    }
-
-    public Integer getNextPage() {
-        return nextPage;
-    }
-
-    public void setNextPage(Integer nextPage) {
-        this.nextPage = nextPage;
-    }
-
-    public Integer getPrePage() {
-        return prePage;
-    }
-
-    public void setPrePage(Integer prePage) {
-        this.prePage = prePage;
-    }
-
-    public Integer getPageSize() {
-        return pageSize;
-    }
-
-    public void setPageSize(Integer pageSize) {
-        this.pageSize = pageSize;
-    }
-
-    public Integer getPages() {
-        return pages;
-    }
-
-    public void setPages(Integer pages) {
-        this.pages = pages;
-    }
 }

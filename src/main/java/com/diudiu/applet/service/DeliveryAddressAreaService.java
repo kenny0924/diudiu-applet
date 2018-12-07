@@ -20,4 +20,12 @@ public interface DeliveryAddressAreaService {
      * 查询有零售店的区域
      */
     List<Province> selectRetailStoreArea();
+
+    /**
+     * 根据省份或者城市名称查找
+     * @param provinceName
+     * @param cityName
+     * @return
+     */
+    List<DeliveryAddressArea> selectByNames(String provinceName, String cityName);
 }
