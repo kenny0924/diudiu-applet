@@ -4,11 +4,13 @@ import com.diudiu.applet.dto.GoodsDto;
 import com.diudiu.applet.dto.Message;
 import com.diudiu.applet.entity.Goods;
 import com.diudiu.applet.entity.GoodsType;
+import com.diudiu.applet.global.CurrentUserHolder;
 import com.diudiu.applet.global.QP;
 import com.diudiu.applet.global.QueryParams;
+import com.diudiu.applet.service.GoodsCollectService;
 import com.diudiu.applet.service.GoodsService;
 import com.diudiu.applet.service.GoodsTypeService;
-import com.diudiu.applet.utils.JsonUtils;
+import com.diudiu.applet.web.annotation.TokenApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,19 +25,30 @@ public class GoodsController {
     private GoodsService goodsService;
     @Autowired
     private GoodsTypeService goodsTypeService;
+    @Autowired
+    private GoodsCollectService goodsCollectService;
 
-    public enum Sort{
+    public enum Sort {
         DEF(1, "默认排序"),
         PRICE_LOW_TO_UP(2, "价格从低到高"),
         PRICE_UP_TO_LOW(3, "价格从高到底"),
-        SELL_UP_TO_LOW(4, "销量从高到底")
-        ;
+        SELL_UP_TO_LOW(4, "销量从高到底");
         private Integer id;
 
         private String name;
-        public Integer getId() { return id; }
-        public String getName() { return name; }
-        Sort(Integer id, String name) { this.id = id; this.name = name; }
+
+        public Integer getId() {
+            return id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        Sort(Integer id, String name) {
+            this.id = id;
+            this.name = name;
+        }
 
         public static List<Map<String, Object>> toList() {
             return Arrays.asList(Sort.values()).stream()
@@ -73,4 +86,6 @@ public class GoodsController {
         List<Goods> goods = goodsService.selectByMap(qp);
         return Message.page(goods);
     }
+
+
 }

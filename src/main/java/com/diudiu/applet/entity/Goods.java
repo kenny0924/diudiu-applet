@@ -1,6 +1,8 @@
 package com.diudiu.applet.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.diudiu.applet.utils.ObjectUtil;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -24,6 +26,7 @@ public class Goods {
             "sn":"CK2-50270047"
     },*/
 
+    @TableId(type = IdType.AUTO)
     private Long id;
 
     private String name;

@@ -25,6 +25,13 @@ public class Message {
     public static final Message SMS_TTL = new Message("550", "验证码过期");
     public static final Message SMS_ERROR = new Message("551", "验证码不正确");
 
+
+    // 商品错误
+    public static final Message DUP_COLLECT = new Message("600", "不能重复收藏该商品");
+    public static final Message DEL_COLLECT_ERROR = new Message("601", "删除收藏商品失败");
+    public static final Message GOODS_NOT_EXISTS = new Message("602", "商品不存在或者已经下架");
+
+
     // 重大错误
     public static final Message REPEAT_REQUEST = new Message("999", "重复提交请求");
 

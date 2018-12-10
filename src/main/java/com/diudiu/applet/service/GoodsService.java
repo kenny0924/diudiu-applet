@@ -23,4 +23,9 @@ public interface GoodsService extends BaseService{
      * 根据条件查询商品
      */
     List<Goods> selectByMap(QueryParams queryParams);
+
+    /**
+     * 根据ID集合查询商品
+     */
+    List<Goods> selectByIds(List<Long> goodsIds);
 }
