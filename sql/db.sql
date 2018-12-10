@@ -208,3 +208,104 @@ create table goods
 )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 DEFAULT CHARACTER SET UTF8 COLLATE UTF8_GENERAL_CI
   comment '商品表';
 
+
+
+
+create table goods_collect (
+  id    int   not null primary key auto_increment
+  comment '主键',
+  goods_id  int   not null
+  comment '收藏的商品ID',
+  user_id   int   not null
+  comment '收藏的用户',
+  create_time datetime  not null
+  comment '收藏时间' default now(),
+  index user_id_create_time(user_id, create_time desc )
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 DEFAULT CHARACTER SET UTF8 COLLATE UTF8_GENERAL_CI
+  comment '收藏表';
+
+
+create table tag (
+  id    int   not null primary key auto_increment
+  comment '主键',
+  name  varchar(32) not null
+  comment '标签名称',
+  is_dir int    not null
+  comment '是否是目录标签 0:不是 1:是' default 0,
+  create_time datetime not null
+  comment '创建时间' default now()
+)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 DEFAULT CHARACTER SET UTF8 COLLATE UTF8_GENERAL_CI
+  comment '标签表';
+
+create table goods_tag (
+  id    int   not null primary key auto_increment
+  comment '主键',
+  goods_id  int   not null
+  comment '商品ID',
+  tag_id    int   not null
+  comment '标签ID',
+  create_time datetime not null
+  comment '创建时间' default now()
+)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 DEFAULT CHARACTER SET UTF8 COLLATE UTF8_GENERAL_CI
+  comment '商品标签表';
+
+create table banner (
+  id    int   not null primary key auto_increment
+  comment '主键',
+  title varchar(64)   not null
+  comment '标题',
+  img_url   varchar(256)  not null
+  comment '图片路径',
+  tag_id    int not null
+  comment '跳转的标签ID',
+  status    int   not null
+  comment '状态 0:关闭 1:开启' default 1,
+  create_time   datetime  not null
+  comment '创建时间'
+)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 DEFAULT CHARACTER SET UTF8 COLLATE UTF8_GENERAL_CI
+  comment '首页banner表';
+
+insert into banner (title, img_url, tag_id, status, create_time)
+values ('新品预警', 'www.baidu.com', 1, 1, now());
+
+create table navigation (
+  id    int   not null primary key auto_increment
+  comment '主键',
+  title varchar(64) not null
+  comment '标题',
+  tag_id  int not null
+  comment '标签ID',
+  status  int not null
+  comment '状态',
+  create_time  datetime not null
+  comment '创建时间',
+  modify_time  datetime null
+  comment '修改时间'
+)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 DEFAULT CHARACTER SET UTF8 COLLATE UTF8_GENERAL_CI
+  comment '首页导航表';
+
+create table recommend (
+  id   int not null primary key auto_increment
+  comment '主键',
+  title   varchar(64) not null
+  comment '标题',
+  tag_id  int   not null
+  comment '标签ID',
+  status  int not null
+  comment '状态',
+  create_time datetime not null
+  comment '创建时间' default now(),
+  modify_time datetime null
+  comment '修改时间'
+)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 DEFAULT CHARACTER SET UTF8 COLLATE UTF8_GENERAL_CI
+  comment '首页推荐表';
+
+create table goods_recommend (
+  id  int not null primary key auto_increment
+  comment '主键',
+  goods_id  int not null
+  comment '商品ID',
+  recommend_id  int not null
+  comment '推荐ID'
+)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 DEFAULT CHARACTER SET UTF8 COLLATE UTF8_GENERAL_CI
+  comment '推荐商品表';
