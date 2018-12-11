@@ -25,6 +25,14 @@ public class User {
 
     private String name;
 
+    // 会员级别 0:不是会员 1:普通会员 2:商户会员 商户会员要在后台管理录入 与当前用户绑定
+    @TableField("vip_level")
+    private Integer vipLevel;
+
+    // 丢丢币
+    @TableField("diudiu_coin")
+    private Integer diudiuCoin;
+
     // 头像
     @TableField("head_portrait")
     private String headPortrait;

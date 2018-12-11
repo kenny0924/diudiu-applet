@@ -46,6 +46,10 @@ public class Goods {
     private String image;
 
     @JsonIgnore
+    @TableField("sale_vol")
+    private Integer saleVol;
+
+    @JsonIgnore
     @TableField("goods_type")
     private String goodsTypeIds;
 

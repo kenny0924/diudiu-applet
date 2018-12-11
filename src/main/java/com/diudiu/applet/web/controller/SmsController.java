@@ -4,6 +4,7 @@ import com.diudiu.applet.dto.LoginDto;
 import com.diudiu.applet.dto.Message;
 import com.diudiu.applet.entity.SmsCode;
 import com.diudiu.applet.service.SmsService;
+import com.diudiu.applet.utils.AliSmsUtils;
 import com.diudiu.applet.utils.ObjectUtil;
 import com.diudiu.applet.utils.RandomUtil;
 import com.diudiu.applet.utils.UUIDUtils;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.Date;
 
 @RestController
@@ -31,8 +33,7 @@ public class SmsController {
 
         Integer random = RandomUtil.generateRandom(4);
 
-        // TODO: 12/3/18 发送短信逻辑
-//        boolean success = commonQueue.sendSms(String.valueOf(random), tel);
+        AliSmsUtils.sendSms(Arrays.asList(loginDto.getUserTel()), random.toString());
         SmsCode userSmsCode = new SmsCode();
         userSmsCode.setSmsCode(random.toString());
         userSmsCode.setCreateTime(new Date());

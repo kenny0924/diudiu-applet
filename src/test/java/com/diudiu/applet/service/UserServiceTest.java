@@ -1,6 +1,5 @@
 package com.diudiu.applet.service;
 
-import com.diudiu.applet.dto.JWTInfo;
 import com.diudiu.applet.dto.LoginDto;
 import com.diudiu.applet.entity.User;
 import org.junit.Test;

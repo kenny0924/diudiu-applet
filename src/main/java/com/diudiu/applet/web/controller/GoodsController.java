@@ -28,39 +28,6 @@ public class GoodsController {
     @Autowired
     private GoodsCollectService goodsCollectService;
 
-    public enum Sort {
-        DEF(1, "默认排序"),
-        PRICE_LOW_TO_UP(2, "价格从低到高"),
-        PRICE_UP_TO_LOW(3, "价格从高到底"),
-        SELL_UP_TO_LOW(4, "销量从高到底");
-        private Integer id;
-
-        private String name;
-
-        public Integer getId() {
-            return id;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        Sort(Integer id, String name) {
-            this.id = id;
-            this.name = name;
-        }
-
-        public static List<Map<String, Object>> toList() {
-            return Arrays.asList(Sort.values()).stream()
-                    .map((s) -> {
-                        Map<String, Object> map = new LinkedHashMap<>();
-                        map.put("id", s.id);
-                        map.put("name", s.name);
-                        return map;
-                    }).collect(Collectors.toList());
-        }
-    }
-
     @GetMapping("/all")
     public Message queryGoodsAll() {
         List<GoodsType> goodsTypes = goodsTypeService.selectTypeAndSubByMap(new HashMap<>());
@@ -79,10 +46,14 @@ public class GoodsController {
     @GetMapping
     public Message queryGoods(
             @RequestParam(value = "pageNumber", defaultValue = "1") Integer pageNum,
-            @RequestParam(value = "pageSize", defaultValue = "20") Integer pageSize
+            @RequestParam(value = "pageSize", defaultValue = "20") Integer pageSize,
+            @RequestParam(required = false) Integer sortType,
+            @RequestParam(required = false) List<Integer> goodsTypes
     ) {
         QueryParams qp = QP.create()
-                .pageNum(pageNum).pageSize(pageSize);
+                .pageNum(pageNum).pageSize(pageSize)
+                .append("sortType", sortType)
+                .append("goodsTypes", goodsTypes);
         List<Goods> goods = goodsService.selectByMap(qp);
         return Message.page(goods);
     }

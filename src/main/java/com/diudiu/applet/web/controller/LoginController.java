@@ -38,7 +38,7 @@ public class LoginController {
     /**
      * 登陆
      */
-    @PostMapping("login")
+    @PostMapping("/login")
     public Message login(@RequestBody @Validated(Default.class) LoginDto dto) throws Exception {
         SmsCode smsCode = smsService.selectBySmsUuid(dto.getSmsUuid());
         if (ObjectUtil.notEmpty(smsCode)

@@ -80,8 +80,7 @@ create table user_auth_token
 create table users
 (
   id            bigint auto_increment primary key
-  comment '主键'
-    primary key,
+  comment '主键',
   user_tel      varchar(11)                        not null
   comment '手机号',
   name          varchar(32)                        null
@@ -90,6 +89,10 @@ create table users
   comment '头像',
   wc_open_id    varchar(64)                        null
   comment '微信OpenID',
+  vip_level        int       not null default 0
+  comment '是否是会员 0:不是会员 1:普通会员 2:商户会员 商户会员要在后台管理录入 与当前用户绑定',
+  diudiu_coin int   not null
+  comment '丢丢币' default 0,
   create_time   datetime default CURRENT_TIMESTAMP not null
   comment '创建时间',
   modify_time   datetime                           null
@@ -201,6 +204,10 @@ create table goods
   comment '丢丢币价格',
   goods_type varchar(127) not null
   comment '商品类型 多个：1,3,4,6区分',
+  sale_vol int not null
+  comment '销量' default 0,
+  status  int not null
+  comment '是否下架 0:没有 1:下架' default 0,
   create_time datetime not null
   comment '创建时间' default now(),
   modify_time datetime  null
